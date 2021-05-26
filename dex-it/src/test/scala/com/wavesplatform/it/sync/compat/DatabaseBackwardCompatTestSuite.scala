@@ -1,7 +1,6 @@
 package com.wavesplatform.it.sync.compat
 
 import com.wavesplatform.dex.api.http.entities.HttpOrderStatus.Status
-import com.wavesplatform.dex.api.http.entities.HttpSuccessfulPlace
 import com.wavesplatform.dex.domain.order.{Order, OrderType}
 import com.wavesplatform.it.api.MatcherCommand
 import com.wavesplatform.it.tags.DexMultipleVersions
@@ -38,7 +37,7 @@ class DatabaseBackwardCompatTestSuite extends BackwardCompatSuiteBase {
     markup("place orders at DEX2")
     val orders = executePlaces(placeCommands)
     withClue("orders.size: ") {
-      orders.size shouldBe > (100) // if its > 100, then there will be not only limit or place orders
+      orders.size shouldBe >(100) // if its > 100, then there will be not only limit or place orders
     }
 
     orders.groupBy(_.assetPair).valuesIterator.foreach { orders =>
