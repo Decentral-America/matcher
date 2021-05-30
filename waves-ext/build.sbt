@@ -39,7 +39,7 @@ inConfig(Compile)(
 )
 
 // Packaging
-executableScriptName := "waves-dex-extension"
+executableScriptName := "decentralchain-dex-extension"
 
 // Add waves-grpc's JAR, dependency modules are ignored by ExtensionPackaging plugin
 classpathOrdering += ExtensionPackaging.linkedProjectJar(
@@ -57,7 +57,7 @@ Runtime / dependencyClasspath := {
 // ZIP archive
 inConfig(Universal)(
   Seq(
-    packageName := s"waves-dex-extension-${version.value}", // An archive file name
+    packageName := s"decentralchain-dex-extension-${version.value}", // An archive file name
     topLevelDirectory := None
   )
 )
@@ -65,7 +65,7 @@ inConfig(Universal)(
 // DEB package
 inConfig(Linux)(
   Seq(
-    name := s"waves-dex-extension${network.value.packageSuffix}", // A staging directory name
+    name := s"decentralchain-dex-extension${network.value.packageSuffix}", // A staging directory name
     normalizedName := name.value, // An archive file name
     packageName := name.value // In a control file
   )

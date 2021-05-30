@@ -71,8 +71,8 @@ inTask(docker)(
     nameOfImage := "wavesplatform/matcher-server",
     dockerfile := new Dockerfile {
 
-      val (user, userId) = ("waves-dex", "113")
-      val (group, groupId) = ("waves-dex", "116")
+      val (user, userId) = ("decentralchain-dex", "113")
+      val (group, groupId) = ("decentralchain-dex", "116")
 
       val runtimePath = s"/var/lib/$user"
       val appPath = s"/usr/share/$user"
@@ -106,12 +106,12 @@ inTask(docker)(
 )
 
 // Packaging
-executableScriptName := "waves-dex"
+executableScriptName := "decentralchain-dex"
 
 // ZIP archive and mappings for all artifacts
 inConfig(Universal)(
   Seq(
-    packageName := s"waves-dex-${version.value}", // An archive file name
+    packageName := s"decentralchain-dex-${version.value}", // An archive file name
     // Common JVM parameters
     // -J prefix is required by a parser
     javaOptions ++= Seq("-Xmx2g", "-Xms512m").map(x => s"-J$x"),
@@ -126,7 +126,7 @@ inConfig(Universal)(
 // DEB package
 inConfig(Linux)(
   Seq(
-    name := "waves-dex", // A staging directory name
+    name := "decentralchain-dex", // A staging directory name
     normalizedName := name.value, // An archive file name
     packageName := name.value // In a control file
   )

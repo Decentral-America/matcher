@@ -60,7 +60,7 @@ object WavesNodeArtifactsPlugin extends AutoPlugin {
             preCachedXs
           } else {
             log.info("Opening the releases page...")
-            val request = Request("https://api.github.com/repos/wavesplatform/Waves/releases").withHeaders("User-Agent" -> "SBT")
+            val request = Request("https://api.github.com/repos/Decentral-America/DCC/releases").withHeaders("User-Agent" -> "SBT")
             val cached = Http.http.run(request).map { releasesContent =>
               log.info(s"Looking for $version version...")
               getFilesDownloadUrls(releasesContent.bodyAsString, version, toCacheXs).map { rawUrl =>
@@ -113,8 +113,8 @@ object WavesNodeArtifactsPlugin extends AutoPlugin {
 
   // List[Alternatives]
   private def artifactNames(version: String): List[List[String]] = List(
-    List(s"waves-all-$version.jar"),
-    networkSuffixes.map(x => s"waves_$x${version}_all.deb"),
+    List(s"decentralchain-all-$version.jar"),
+    networkSuffixes.map(x => s"decentralchain_$x${version}_all.deb"),
     networkSuffixes.map(x => s"grpc-server$x-$version.tgz"),
     networkSuffixes.map(x => s"grpc-server${x}_${version}_all.deb")
   )
