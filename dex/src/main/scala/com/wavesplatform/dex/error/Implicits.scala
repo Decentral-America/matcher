@@ -32,7 +32,7 @@ object Implicits {
   implicit val byteStrShow = show[ByteStr](_.toString)
   implicit val assetShow = show[Asset](_.toString)
   implicit val issuedAssetShow = show[IssuedAsset](_.toString)
-  implicit val wavesShow = show[Waves.type](_ => "WAVES")
+  implicit val wavesShow = show[Waves.type](_ => "DCC")
   implicit val assetPairShow = show[AssetPair](_.key)
   implicit val publicKeyShow = show[PublicKey](_.toString)
   implicit val addressShow = show[Address](_.stringRepr)

@@ -13,7 +13,7 @@ object Asset {
   val AssetIdLength: Int = com.wavesplatform.dex.domain.crypto.DigestSize
   val AssetIdStringLength: Int = base58Length(AssetIdLength)
 
-  val WavesName = "WAVES"
+  val WavesName = "DCC"
 
   // TODO Refactor:
   //  1. toString is a method used only for debugging purposes.
