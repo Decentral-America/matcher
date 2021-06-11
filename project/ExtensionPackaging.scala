@@ -78,7 +78,7 @@ object ExtensionPackaging extends AutoPlugin {
         val nodeVersion = wavesNodeVersion.value
         val minorNodeVersion = nodeVersion.split('.')
           .lastOption.flatMap(x => Try(x.toInt).toOption).getOrElse(throw new RuntimeException(
-            s"Can't parse waves node minor version of $nodeVersion"
+            s"Can't parse decentralchain node minor version of $nodeVersion"
           ))
         val nextNodeVersion = (nodeVersion.split('.').dropRight(1) :+ (minorNodeVersion + 1)).mkString(".")
         Seq(s"${nodePackageName.value} (>= $nodeVersion)", s"${nodePackageName.value} (<< $nextNodeVersion)")
