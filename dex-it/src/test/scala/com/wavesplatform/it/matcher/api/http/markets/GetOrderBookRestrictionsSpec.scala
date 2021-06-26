@@ -20,7 +20,7 @@ class GetOrderBookRestrictionsSpec extends MatcherSuiteBase with TableDrivenProp
 
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
          |    order-restrictions = {
          |   "WAVES-$UsdId": {
          |     min-amount  = $minAmount
@@ -45,7 +45,7 @@ class GetOrderBookRestrictionsSpec extends MatcherSuiteBase with TableDrivenProp
 
     "should return exception when amount is not a correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getOrderBookRestrictions("null", "WAVES"),
+        dex1.rawApi.getOrderBookRestrictions("null", "DCC"),
         StatusCode.BadRequest,
         InvalidAsset.code,
         "The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -54,7 +54,7 @@ class GetOrderBookRestrictionsSpec extends MatcherSuiteBase with TableDrivenProp
 
     "should return exception when price is not a correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getOrderBookRestrictions("WAVES", "null"),
+        dex1.rawApi.getOrderBookRestrictions("DCC", "null"),
         StatusCode.BadRequest,
         InvalidAsset.code,
         "The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -75,8 +75,8 @@ class GetOrderBookRestrictionsSpec extends MatcherSuiteBase with TableDrivenProp
 
     forAll(Table(
       ("Amount", "Price", "Http status", "Error code", "Message"),
-      ("incorrect", "WAVES", StatusCode.NotFound, AssetNotFound.code, "The asset incorrect not found"),
-      ("WAVES", "incorrect", StatusCode.NotFound, OrderAssetPairReversed.code, "The WAVES-incorrect asset pair should be reversed")
+      ("incorrect", "DCC", StatusCode.NotFound, AssetNotFound.code, "The asset incorrect not found"),
+      ("DCC", "incorrect", StatusCode.NotFound, OrderAssetPairReversed.code, "The WAVES-incorrect asset pair should be reversed")
     )) { (a: String, p: String, c: StatusCode, e: Int, m: String) =>
       s"for $a/$p should return (HTTP-$c; [$e: $m]) " in {
         validateMatcherError(dex1.rawApi.getOrderBookRestrictions(AssetPair.createAssetPair(a, p).get), c, e, m)

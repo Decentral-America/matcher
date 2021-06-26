@@ -18,7 +18,7 @@ class GetOrderStatusByPKAndIdWithSigSpec extends MatcherSuiteBase with TableDriv
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$BtcId", "$UsdId", "WAVES" ]
+       |  price-assets = [ "$BtcId", "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 

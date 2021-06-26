@@ -40,7 +40,7 @@ class OrderJsonSpec extends WavesIntegrationSuiteBase with Matchers {
        |  "senderPublicKey" : "226pFho3kqHiCoiQVAUq5MVFkg3KzGLc2zLNsbH8GmE7",
        |  "matcherPublicKey" : "J6ghck2hA2GNJTHGSLSeuCjKuLDGz8i83NfCMFVoWhvf",
        |  "assetPair" : {
-       |    "amountAsset" : "WAVES",
+       |    "amountAsset" : "DCC",
        |    "priceAsset" : "3BVv85"
        |  },
        |  "orderType" : "sell",

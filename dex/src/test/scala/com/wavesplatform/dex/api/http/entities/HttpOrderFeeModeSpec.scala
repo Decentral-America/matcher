@@ -24,7 +24,7 @@ class HttpOrderFeeModeSpec extends AnyFreeSpec with Matchers with DiffMatcherWit
                                           |  "dynamic" : {
                                           |    "baseFee" : 600000,
                                           |    "rates" : {
-                                          |      "WAVES" : 1
+                                          |      "DCC" : 1
                                           |    }
                                           |  }
                                           |}""".stripMargin

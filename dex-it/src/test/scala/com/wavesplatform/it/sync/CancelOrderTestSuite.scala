@@ -26,7 +26,7 @@ import scala.concurrent.duration.DurationInt
 class CancelOrderTestSuite extends MatcherSuiteBase {
 
   override protected def dexInitialSuiteConfig: Config =
-    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "$BtcId", "WAVES" ]""")
+    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "$BtcId", "DCC" ]""")
 
   private var knownAccounts = List(alice, bob)
 

@@ -12,7 +12,7 @@ import im.mak.waves.transactions.ExchangeTransaction
 class RoundingIssuesTestSuite extends MatcherSuiteBase {
 
   override protected def dexInitialSuiteConfig: Config =
-    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "$BtcId", "WAVES" ]""")
+    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "$BtcId", "DCC" ]""")
 
   override protected def beforeAll(): Unit = {
     wavesNode1.start()

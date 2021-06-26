@@ -43,7 +43,7 @@ class WsOrderBookStreamTestSuite extends WsSuiteBase {
 
   override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$UsdId", "$BtcId", "WAVES", "$EthId" ]
+       |  price-assets = [ "$UsdId", "$BtcId", "DCC", "$EthId" ]
        |  order-restrictions = {
        |    "WAVES-$BtcId": {
        |      step-amount = 0.00000001

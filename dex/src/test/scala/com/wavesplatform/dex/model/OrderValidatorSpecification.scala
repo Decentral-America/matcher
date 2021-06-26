@@ -210,7 +210,7 @@ class OrderValidatorSpecification
 
         import play.api.libs.json.Json
 
-        val json = createOrder(AssetPair(btc, usd), SELL, 100, 3.0, feeAsset = usd).json() ++ Json.obj("matcherFeeAssetId" -> "WAVES")
+        val json = createOrder(AssetPair(btc, usd), SELL, 100, 3.0, feeAsset = usd).json() ++ Json.obj("matcherFeeAssetId" -> "DCC")
         val order = Json.fromJson[Order](json).get
         order.feeAsset shouldBe Waves
 

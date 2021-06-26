@@ -15,7 +15,7 @@ class GetOrderBookTestSuite extends MatcherSuiteBase {
   override protected val dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES", $EthId ]
+         |  price-assets = [ "$UsdId", "DCC", $EthId ]
          |  order-book-http {
          |    depth-ranges = [10, 20, 40, 41, 43, 100, 1000]
          |    default-depth = 100

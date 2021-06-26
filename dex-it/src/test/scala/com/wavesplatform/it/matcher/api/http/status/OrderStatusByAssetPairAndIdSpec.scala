@@ -14,7 +14,7 @@ class OrderStatusByAssetPairAndIdSpec extends MatcherSuiteBase with TableDrivenP
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$BtcId", "$UsdId", "WAVES" ]
+       |  price-assets = [ "$BtcId", "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 
@@ -70,7 +70,7 @@ class OrderStatusByAssetPairAndIdSpec extends MatcherSuiteBase with TableDrivenP
 
     "should return an error exception when the price asset is not correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getOrderStatusByAssetPairAndId("WAVES", "null", order.idStr()),
+        dex1.rawApi.getOrderStatusByAssetPairAndId("DCC", "null", order.idStr()),
         StatusCode.BadRequest,
         InvalidAsset.code,
         "The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -81,7 +81,7 @@ class OrderStatusByAssetPairAndIdSpec extends MatcherSuiteBase with TableDrivenP
       val incorrectAsset = "3Q6ndEq2z5UJwF4SF24ySRj9guPoFWaSeXP"
 
       validateMatcherError(
-        dex1.rawApi.getOrderStatusByAssetPairAndId(incorrectAsset, "WAVES", order.idStr()),
+        dex1.rawApi.getOrderStatusByAssetPairAndId(incorrectAsset, "DCC", order.idStr()),
         StatusCode.NotFound,
         AssetNotFound.code,
         s"The asset $incorrectAsset not found"
@@ -92,14 +92,14 @@ class OrderStatusByAssetPairAndIdSpec extends MatcherSuiteBase with TableDrivenP
 
       def mkAsset(): IssueTransaction = {
         val tx = mkIssue(alice, "name", someAssetAmount, 2)
-        if (tx.id().toString < "WAVES") tx
+        if (tx.id().toString < "DCC") tx
         else mkAsset()
       }
 
       val issuedAsset = mkAsset()
       broadcastAndAwait(issuedAsset)
 
-      validate301Redirect(dex1.rawApi.getOrderStatusByAssetPairAndId("WAVES", issuedAsset.assetId().toString, order.idStr()))
+      validate301Redirect(dex1.rawApi.getOrderStatusByAssetPairAndId("DCC", issuedAsset.assetId().toString, order.idStr()))
     }
   }
 }

@@ -326,7 +326,7 @@ class BaseSettingsSpecification extends AnyFlatSpec {
          |        base-taker-fee = 300000
          |      }
          |      fixed {
-         |        asset = "WAVES" # | "some issued asset (base58)"
+         |        asset = "DCC" # | "some issued asset (base58)"
          |        min-fee = 300000
          |      }
          |      percent {

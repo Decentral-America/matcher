@@ -77,7 +77,7 @@ class ReservedBalanceSpecification extends AnyPropSpecLike with MatcherSpecLike 
 
   import system.dispatcher
 
-  private val pair: AssetPair = AssetPair(mkAssetId("WAVES"), mkAssetId("USD"))
+  private val pair: AssetPair = AssetPair(mkAssetId("DCC"), mkAssetId("USD"))
 
   private val addressDir = system.actorOf(
     Props(
@@ -450,7 +450,7 @@ class ReservedBalanceSpecification extends AnyPropSpecLike with MatcherSpecLike 
     }
 
     def toStringWUE: String = asset match {
-      case Waves => "WAVES"
+      case Waves => "DCC"
       case `usd` => "USD"
       case `eth` => "ETH"
       case _ => "wtf"

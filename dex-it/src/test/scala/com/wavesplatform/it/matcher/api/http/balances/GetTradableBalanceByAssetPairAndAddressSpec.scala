@@ -14,7 +14,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
          |}""".stripMargin
     )
 
@@ -72,7 +72,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
 
     "should return an error exception when the price asset is not correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, "WAVES", "null"),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, "DCC", "null"),
         StatusCode.BadRequest,
         InvalidAsset.code,
         s"The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -82,7 +82,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
     "should return an error when amount asset doesn't exist" in {
       val incorrectAsset = "3Q6ndEq2z5UJwF4SF24ySRj9guPoFWaSeXP"
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, incorrectAsset, "WAVES"),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, incorrectAsset, "DCC"),
         StatusCode.NotFound,
         AssetNotFound.code,
         s"The asset $incorrectAsset not found"
@@ -93,7 +93,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
     "should return an error when price asset doesn't exist" in {
       val incorrectAsset = "3Q6ndEq2z5UJwF4SF24ySRj9guPoFWaSeXP"
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, "WAVES", incorrectAsset),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, "DCC", incorrectAsset),
         StatusCode.NotFound,
         OrderAssetPairReversed.code,
         s"The WAVES-$incorrectAsset asset pair should be reversed"
@@ -101,12 +101,12 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
     }
 
     "should return redirect when amount and price assets is not in correct order" in {
-      validate301Redirect(dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, UsdId.toString, "WAVES"))
+      validate301Redirect(dex1.rawApi.getTradableBalanceByAssetPairAndAddress(alice.toAddress.stringRepr, UsdId.toString, "DCC"))
     }
 
     "should return an error if address has a bad checksum" in {
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("3Q6ndEq2z5UJwFaSF24ySRj9guPoFWaSeXX", "WAVES", UsdId.toString),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("3Q6ndEq2z5UJwFaSF24ySRj9guPoFWaSeXX", "DCC", UsdId.toString),
         StatusCode.BadRequest,
         InvalidAddress.code,
         "Provided address in not correct, reason: Bad address checksum"
@@ -115,7 +115,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
 
     "should return an error if address has an incorrect length" in {
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("AAAAA", "WAVES", UsdId.toString),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("AAAAA", "DCC", UsdId.toString),
         StatusCode.BadRequest,
         InvalidAddress.code,
         "Provided address in not correct, reason: Wrong addressBytes length: expected: 26, actual: 4"
@@ -124,7 +124,7 @@ class GetTradableBalanceByAssetPairAndAddressSpec extends MatcherSuiteBase with 
 
     "should return an error if address is not correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("null", "WAVES", UsdId.toString),
+        dex1.rawApi.getTradableBalanceByAssetPairAndAddress("null", "DCC", UsdId.toString),
         StatusCode.BadRequest,
         InvalidAddress.code,
         "Provided address in not correct, reason: Unable to decode base58: requirement failed: Wrong char 'l' in Base58 string 'null'"

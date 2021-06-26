@@ -16,7 +16,7 @@ class GetOrderStatusByAddressAndIdWithKeySpec extends MatcherSuiteBase with ApiK
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$BtcId", "$UsdId", "WAVES" ]
+       |  price-assets = [ "$BtcId", "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 

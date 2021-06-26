@@ -23,7 +23,7 @@ class DexClientFaultToleranceTestSuite extends MatcherSuiteBase with HasToxiProx
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |  waves-blockchain-client { 
          |    grpc.target = "dns:///$toxiProxyHostName:${getInnerToxiProxyPort(wavesNodeProxy)}"
          |    blockchain-updates-grpc.target = "dns:///$toxiProxyHostName:${getInnerToxiProxyPort(blockchainUpdatesExtensionProxy)}"

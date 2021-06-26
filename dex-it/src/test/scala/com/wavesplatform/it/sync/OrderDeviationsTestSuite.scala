@@ -51,7 +51,7 @@ class OrderDeviationsTestSuite extends MatcherSuiteBase {
   override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""
        |waves.dex {
-       |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+       |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
        |  allowed-order-versions = [1, 2, 3]
        |  max-price-deviations {
        |    enable = yes

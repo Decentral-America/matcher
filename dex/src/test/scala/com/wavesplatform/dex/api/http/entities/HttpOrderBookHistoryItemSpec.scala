@@ -22,7 +22,7 @@ class HttpOrderBookHistoryItemSpec extends AnyFreeSpec with Matchers with DiffMa
       |  "price" : 489,
       |  "fee" : 6345852410462127,
       |  "filledFee" : 0,
-      |  "feeAsset" : "WAVES",
+      |  "feeAsset" : "DCC",
       |  "timestamp" : 1578074613225,
       |  "status" : "Accepted",
       |  "assetPair" : {

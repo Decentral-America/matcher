@@ -41,7 +41,7 @@ class MatcherTestSuite extends MatcherSuiteBase with TableDrivenPropertyChecks {
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$UsdnId", "$BtcId", "$UsdId", "WAVES", $EthId ]
+       |  price-assets = [ "$UsdnId", "$BtcId", "$UsdId", "DCC", $EthId ]
        |  order-db.max-orders = $maxOrders
        |}""".stripMargin
   )
@@ -107,7 +107,7 @@ class MatcherTestSuite extends MatcherSuiteBase with TableDrivenPropertyChecks {
         markets.amountAssetName shouldBe aliceAssetName
         markets.amountAssetInfo shouldBe Some(HttpAssetInfo(issueAliceAssetTx.decimals()))
 
-        markets.priceAssetName shouldBe "WAVES"
+        markets.priceAssetName shouldBe "DCC"
         markets.priceAssetInfo shouldBe Some(HttpAssetInfo(8))
       }
 
@@ -569,10 +569,10 @@ class MatcherTestSuite extends MatcherSuiteBase with TableDrivenPropertyChecks {
       ob.asks should have size 1
       ob.bids should have size 0
 
-      // Before: [ "$UsdnId", "$BtcId", "$UsdId", "WAVES", $EthId ]
+      // Before: [ "$UsdnId", "$BtcId", "$UsdId", "DCC", $EthId ]
       dex1.restartWithNewSuiteConfig(
         ConfigFactory
-          .parseString(s"""waves.dex.price-assets = [ "$UsdnId", "$BtcId", "$UsdId", $EthId, "WAVES"]""".stripMargin)
+          .parseString(s"""waves.dex.price-assets = [ "$UsdnId", "$BtcId", "$UsdId", $EthId, "DCC"]""".stripMargin)
           .withFallback(dexInitialSuiteConfig)
       )
 

@@ -23,7 +23,7 @@ class WsInternalStreamTestSuite extends WsSuiteBase with TableDrivenPropertyChec
 
   override protected val dexInitialSuiteConfig: Config = ConfigFactory
     .parseString(s"""waves.dex {
-                    |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+                    |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
                     |  web-sockets.internal-broadcast.messages-interval = $messagesInterval
                     |}""".stripMargin)
     .withFallback(jwtPublicKeyConfig)

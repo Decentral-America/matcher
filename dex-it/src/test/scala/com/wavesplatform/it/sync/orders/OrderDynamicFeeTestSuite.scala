@@ -16,7 +16,7 @@ class OrderDynamicFeeTestSuite extends OrderFeeBaseTestSuite {
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""
        |waves.dex {
-       |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+       |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
        |  allowed-order-versions = [1, 2, 3]
        |  order-fee.-1 {
        |    mode = dynamic

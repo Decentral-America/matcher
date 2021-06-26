@@ -29,7 +29,7 @@ class WsAddressStreamTestSuite extends WsSuiteBase with TableDrivenPropertyCheck
 
   override protected val dexInitialSuiteConfig: Config = ConfigFactory
     .parseString(s"""waves.dex {
-                    |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+                    |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
                     |  web-sockets.external-client-handler.subscriptions.max-address-number = 3
                     |}""".stripMargin)
     .withFallback(jwtPublicKeyConfig)

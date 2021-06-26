@@ -33,7 +33,7 @@ class NetworkIssuesTestSuite extends WsSuiteBase with HasToxiProxy {
     ConfigFactory
       .parseString(
         s"""waves.dex {
-           |  price-assets = [ "$UsdId", "WAVES" ]
+           |  price-assets = [ "$UsdId", "DCC" ]
            |  waves-blockchain-client {
            |    grpc.target = "dns:///$toxiProxyHostName:${getInnerToxiProxyPort(matcherExtensionProxy)}"
            |    blockchain-updates-grpc.target = "dns:///$toxiProxyHostName:${getInnerToxiProxyPort(blockchainUpdatesExtensionProxy)}"
@@ -162,7 +162,7 @@ class NetworkIssuesTestSuite extends WsSuiteBase with HasToxiProxy {
 
     val conf = ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |  waves-blockchain-client { 
          |    grpc.target = "dns:///${WavesNodeContainer.wavesNodeNetAlias}:${WavesNodeContainer.matcherGrpcExtensionPort}"
          |    blockchain-updates-grpc.target = "dns:///${WavesNodeContainer.wavesNodeNetAlias}:${WavesNodeContainer.blockchainUpdatesGrpcExtensionPort}"

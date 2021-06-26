@@ -10,7 +10,7 @@ class GetOldestSnapshotOffsetSpec extends MatcherSuiteBase with ApiKeyHeaderChec
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |}""".stripMargin
     )
 

@@ -12,7 +12,7 @@ import com.wavesplatform.it.tags.DexItExternalKafkaRequired
 class MultipleMatchersOrderCancelTestSuite extends MatcherSuiteBase {
 
   override protected def dexInitialSuiteConfig: Config =
-    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "WAVES" ]""".stripMargin)
+    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "DCC" ]""".stripMargin)
 
   protected lazy val dex2: DexContainer = createDex("dex-2")
 

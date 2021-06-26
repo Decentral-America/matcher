@@ -14,7 +14,7 @@ class MatcherRecoveryTestSuite extends MatcherSuiteBase {
     ConfigFactory.parseString(
       s"""waves.dex {
          |  snapshots-interval = 51
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |}""".stripMargin
     )
 

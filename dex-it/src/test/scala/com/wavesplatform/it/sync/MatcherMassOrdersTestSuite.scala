@@ -19,7 +19,7 @@ class MatcherMassOrdersTestSuite extends MatcherSuiteBase {
     s"""waves.dex {
        |  address-actor.max-active-orders = $maxActiveOrders
        |  order-db.max-orders = $maxFinalizedOrders
-       |  price-assets = [ "$UsdId", "WAVES" ]
+       |  price-assets = [ "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 

@@ -357,7 +357,7 @@ class OrderBookTestSuite
   }
 
   "buy small amount of pricey asset" in {
-    val p = AssetPair(IssuedAsset(ByteStr("WAVES".getBytes)), IssuedAsset(ByteStr("USD".getBytes)))
+    val p = AssetPair(IssuedAsset(ByteStr("DCC".getBytes)), IssuedAsset(ByteStr("USD".getBytes)))
     val b = rawBuy(p, 0.007.waves, 280L)
     val s = rawSell(p, 300.0.waves, 280L)
 

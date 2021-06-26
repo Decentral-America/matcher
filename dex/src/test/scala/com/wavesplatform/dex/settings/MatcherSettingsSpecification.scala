@@ -351,7 +351,7 @@ baz"""
     def configStr(x: String): Config = configWithSettings(orderFeeStr = x)
 
     getSettingByConfig(configStr(invalidMode())) should produce("waves.dex.order-fee.-1.mode.+\n.+invalid".r)
-    getSettingByConfig(configStr(invalidMode("waves"))) should produce("waves.dex.order-fee.-1.mode.+\n.+waves".r)
+    getSettingByConfig(configStr(invalidMode("DCC"))) should produce("waves.dex.order-fee.-1.mode.+\n.+waves".r)
     getSettingByConfig(configStr(invalidAssetType)) should produce("waves.dex.order-fee.-1.percent.asset-type.+\n.+test".r)
     getSettingByConfig(configStr(invalidPercent)) should produce("order-fee.-1.percent.min-fee")
     getSettingByConfig(configStr(invalidAsset)) should produce("order-fee.-1.fixed.asset.+\n.+;".r)
@@ -409,9 +409,9 @@ baz"""
 
     getSettingByConfig(configStr(nonEmptyCorrect)).explicitGet().allowedAssetPairs shouldBe
     Set(
-      AssetPair.createAssetPair("WAVES", "BTC").get,
-      AssetPair.createAssetPair("WAVES", "ETH").get,
-      AssetPair.createAssetPair("8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS", "WAVES").get
+      AssetPair.createAssetPair("DCC", "BTC").get,
+      AssetPair.createAssetPair("DCC", "ETH").get,
+      AssetPair.createAssetPair("8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS", "DCC").get
     )
   }
 

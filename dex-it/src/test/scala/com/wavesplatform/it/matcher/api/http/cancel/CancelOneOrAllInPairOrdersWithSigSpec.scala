@@ -15,7 +15,7 @@ class CancelOneOrAllInPairOrdersWithSigSpec extends MatcherSuiteBase with RawHtt
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |}""".stripMargin
     )
 
@@ -70,7 +70,7 @@ class CancelOneOrAllInPairOrdersWithSigSpec extends MatcherSuiteBase with RawHtt
       val ts = System.currentTimeMillis
       val sign = crypto.sign(alice, alice.publicKey ++ Longs.toByteArray(ts))
 
-      validateIncorrectSignature(dex1.rawApi.cancelOneOrAllInPairOrdersWithSig(bob, "WAVES", UsdId.toString, o.idStr(), ts, sign))
+      validateIncorrectSignature(dex1.rawApi.cancelOneOrAllInPairOrdersWithSig(bob, "DCC", UsdId.toString, o.idStr(), ts, sign))
     }
 
     "should return an error if timestamp header has the different value of used in signature" in {
@@ -79,7 +79,7 @@ class CancelOneOrAllInPairOrdersWithSigSpec extends MatcherSuiteBase with RawHtt
       val ts = System.currentTimeMillis
       val sign = crypto.sign(alice, alice.publicKey ++ Longs.toByteArray(ts))
 
-      validateIncorrectSignature(dex1.rawApi.cancelOneOrAllInPairOrdersWithSig(bob, "WAVES", UsdId.toString, o.idStr(), ts + 1000, sign))
+      validateIncorrectSignature(dex1.rawApi.cancelOneOrAllInPairOrdersWithSig(bob, "DCC", UsdId.toString, o.idStr(), ts + 1000, sign))
     }
   }
 

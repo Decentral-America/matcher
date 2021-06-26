@@ -14,7 +14,7 @@ class HttpV0OrderBookSpec extends AnyFreeSpec with Matchers with DiffMatcherWith
                        |  "timestamp" : 0,
                        |  "pair" : {
                        |    "amountAsset" : "LWbazpyvj625QB6EMC1vQoMkrvn2DdKjYbuuEw2T2UF",
-                       |    "priceAsset" : "WAVES"
+                       |    "priceAsset" : "DCC"
                        |  },
                        |  "bids" : [ {
                        |    "amount" : 10000000000000,

@@ -159,7 +159,7 @@ object TankGenerator {
       .grouped(100)
       .zipWithIndex
       .foreach { case (group, index) =>
-        try node.broadcast(mkMassTransfer(transfers = group, asset = AssetId.as("WAVES"), ts = now + index))
+        try node.broadcast(mkMassTransfer(transfers = group, asset = AssetId.as("DCC"), ts = now + index))
         catch { case e: Exception => println(e) }
       }
     println(s" Done")
@@ -228,11 +228,11 @@ object TankGenerator {
             val id = (o \ "id").as[ByteStr]
             val aa = ((o \ "assetPair").as[JsValue] \ "amountAsset").validate[String] match {
               case JsSuccess(name, _) => name
-              case _: JsError => "WAVES"
+              case _: JsError => "DCC"
             }
             val pa = ((o \ "assetPair").as[JsValue] \ "priceAsset").validate[String] match {
               case JsSuccess(name, _) => name
-              case _: JsError => "WAVES"
+              case _: JsError => "DCC"
             }
 
             val unsignedRequest =
@@ -317,11 +317,11 @@ object TankGenerator {
             val id = (o \ "id").as[String]
             val aa = ((o \ "assetPair").as[JsValue] \ "amountAsset").validate[String] match {
               case JsSuccess(name, _) => name
-              case _: JsError => "WAVES"
+              case _: JsError => "DCC"
             }
             val pa = ((o \ "assetPair").as[JsValue] \ "priceAsset").validate[String] match {
               case JsSuccess(name, _) => name
-              case _: JsError => "WAVES"
+              case _: JsError => "DCC"
             }
             Request(
               RequestType.GET,

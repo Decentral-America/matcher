@@ -9,7 +9,7 @@ import com.wavesplatform.it.MatcherSuiteBase
 
 class SeveralPartialOrdersTestSuite extends MatcherSuiteBase {
 
-  override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "WAVES" ]""")
+  override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$UsdId", "DCC" ]""")
 
   override protected def beforeAll(): Unit = {
     wavesNode1.start()

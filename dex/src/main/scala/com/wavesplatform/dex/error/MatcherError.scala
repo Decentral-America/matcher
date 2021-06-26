@@ -187,7 +187,7 @@ final case class OrderCommonValidationFailed(details: String)
 
 object OrderCommonValidationFailed extends MatcherErrorCodeProvider(order, commonEntity, commonClass)
 
-final case class InvalidAsset(asset: String, reason: String = "It should be 'WAVES' or a Base58 string")
+final case class InvalidAsset(asset: String, reason: String = "It should be 'DCC' or a Base58 string")
     extends MatcherError(
       InvalidAsset.code,
       e"The asset '${"assetId" -> asset}' is wrong, reason: ${"reason" -> reason}"

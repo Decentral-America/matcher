@@ -17,7 +17,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES" ]
+         |  price-assets = [ "$UsdId", "DCC" ]
          |}""".stripMargin
     )
 
@@ -72,7 +72,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
       val sign = Base58.encode(crypto.sign(alice, alice.publicKey ++ Longs.toByteArray(ts)))
 
       validateMatcherError(
-        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig("null", "WAVES", UsdId.toString, ts, sign),
+        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig("null", "DCC", UsdId.toString, ts, sign),
         StatusCode.BadRequest,
         UserPublicKeyIsNotValid.code,
         "Provided public key is not correct, reason: Unable to decode base58: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -84,7 +84,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
       val sign = Base58.encode(crypto.sign(alice, alice.publicKey ++ Longs.toByteArray(ts)))
 
       validateMatcherError(
-        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(Base58.encode(alice.publicKey), "WAVES", "null", ts, sign),
+        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(Base58.encode(alice.publicKey), "DCC", "null", ts, sign),
         StatusCode.BadRequest,
         InvalidAsset.code,
         s"The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -96,7 +96,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
       val sign = Base58.encode(crypto.sign(alice, alice.publicKey ++ Longs.toByteArray(ts)))
 
       validateMatcherError(
-        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(Base58.encode(alice.publicKey), "WAVES", "null", ts, sign),
+        dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(Base58.encode(alice.publicKey), "DCC", "null", ts, sign),
         StatusCode.BadRequest,
         InvalidAsset.code,
         s"The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -109,7 +109,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
 
       validateIncorrectSignature(dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(
         Base58.encode(bob.publicKey),
-        "WAVES",
+        "DCC",
         UsdId.toString,
         ts,
         sign
@@ -122,7 +122,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
 
       validateIncorrectSignature(dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(
         Base58.encode(alice.publicKey),
-        "WAVES",
+        "DCC",
         UsdId.toString,
         ts + 1000,
         sign
@@ -132,7 +132,7 @@ class GetOrderHistoryByAssetPairAndPKWithSigSpec extends MatcherSuiteBase with R
     "should return an error with incorrect signature" in {
       validateIncorrectSignature(dex1.rawApi.getOrderHistoryByAssetPairAndPKWithSig(
         Base58.encode(alice.publicKey),
-        "WAVES",
+        "DCC",
         UsdId.toString,
         System.currentTimeMillis,
         "incorrect"

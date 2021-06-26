@@ -10,7 +10,7 @@ import com.wavesplatform.it.MatcherSuiteBase
 
 class MatcherTickerTestSuite extends MatcherSuiteBase {
 
-  override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(s"""waves.dex.price-assets = ["$UsdId", "WAVES"]""")
+  override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(s"""waves.dex.price-assets = ["$UsdId", "DCC"]""")
 
   override protected def beforeAll(): Unit = {
     wavesNode1.start()

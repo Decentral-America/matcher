@@ -11,7 +11,7 @@ class OrderRestrictionsTestSuite extends MatcherSuiteBase {
     ConfigFactory.parseString(
       s"""
          |waves.dex {
-         |  price-assets = [ "$UsdId", "$BtcId", "WAVES", "$EthId" ]
+         |  price-assets = [ "$UsdId", "$BtcId", "DCC", "$EthId" ]
          |  order-restrictions = {
          |   "$WctId-$UsdId": {
          |     min-amount  = 0.1

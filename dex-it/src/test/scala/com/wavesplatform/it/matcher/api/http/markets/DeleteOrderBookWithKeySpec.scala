@@ -13,7 +13,7 @@ class DeleteOrderBookWithKeySpec extends MatcherSuiteBase with ApiKeyHeaderCheck
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$UsdId", "WAVES" ]
+       |  price-assets = [ "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 
@@ -56,16 +56,16 @@ class DeleteOrderBookWithKeySpec extends MatcherSuiteBase with ApiKeyHeaderCheck
 
     "should return an error exception when the price asset is not correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.deleteOrderBookWithKey("WAVES", "null", Map("X-API-KEY" -> apiKey)),
+        dex1.rawApi.deleteOrderBookWithKey("DCC", "null", Map("X-API-KEY" -> apiKey)),
         StatusCode.BadRequest,
         InvalidAsset.code,
         s"The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
       )
     }
 
-    shouldReturnErrorWithoutApiKeyHeader(dex1.rawApi.deleteOrderBookWithKey("WAVES", UsdId.toString, Map.empty))
+    shouldReturnErrorWithoutApiKeyHeader(dex1.rawApi.deleteOrderBookWithKey("DCC", UsdId.toString, Map.empty))
 
-    shouldReturnErrorWithIncorrectApiKeyValue(dex1.rawApi.deleteOrderBookWithKey("WAVES", UsdId.toString, incorrectApiKeyHeader))
+    shouldReturnErrorWithIncorrectApiKeyValue(dex1.rawApi.deleteOrderBookWithKey("DCC", UsdId.toString, incorrectApiKeyHeader))
   }
 
 }

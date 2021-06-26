@@ -11,7 +11,7 @@ class OrderBookSnapshotsTestSuite extends MatcherSuiteBase {
 
   override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = ["$UsdId", "WAVES"]
+       |  price-assets = ["$UsdId", "DCC"]
        |  snapshots-interval = $interval
        |}""".stripMargin
   )

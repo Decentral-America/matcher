@@ -134,7 +134,7 @@ class BlacklistedTradingTestSuite extends MatcherSuiteBase with GivenWhenThen {
     def toStr(array: Array[String]): String = if (array.length == 0) "" else array.mkString("\"", "\", \"", "\"")
     parseString(s"""
                    |waves.dex {
-                   |  price-assets = [ "$UsdId", "$BtcId", "WAVES" ]
+                   |  price-assets = [ "$UsdId", "$BtcId", "DCC" ]
                    |  blacklisted-assets = [${toStr(assets.map(_.toString))}]
                    |  blacklisted-names = [${toStr(names)}]
                    |  blacklisted-addresses = [${toStr(addresses.map(_.toAddress.toString))}]

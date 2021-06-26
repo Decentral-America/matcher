@@ -47,7 +47,7 @@ class PostgresHistoryDatabaseTestSuite extends MatcherSuiteBase with HasPostgres
   override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""
        |waves.dex {
-       |  price-assets = [ "$UsdId", "$BtcId", "WAVES", "$EthId", "$WctId" ]
+       |  price-assets = [ "$UsdId", "$BtcId", "DCC", "$EthId", "$WctId" ]
        |  ${getPostgresConnectionCfgString(postgresContainerName, postgresContainerPort, customAppName)}
        |  order-db.max-orders = $maxOrders
        |  order-history.enable = yes
@@ -407,9 +407,9 @@ class PostgresHistoryDatabaseTestSuite extends MatcherSuiteBase with HasPostgres
             limitOrderType,
             alice.publicKey.toString,
             buySide,
-            "WAVES",
+            "DCC",
             usd.toString,
-            "WAVES",
+            "DCC",
             300,
             0.35,
             0.00370300,
@@ -431,7 +431,7 @@ class PostgresHistoryDatabaseTestSuite extends MatcherSuiteBase with HasPostgres
             limitOrderType,
             bob.publicKey.toString,
             sellSide,
-            "WAVES",
+            "DCC",
             usd.toString,
             usd.toString,
             300,

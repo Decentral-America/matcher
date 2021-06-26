@@ -14,7 +14,7 @@ class Dex1052BugSpec extends MatcherSuiteBase {
   override protected def dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$BtcId", "$UsdId", "WAVES" ]
+         |  price-assets = [ "$BtcId", "$UsdId", "DCC" ]
          |  waves-blockchain-client.combined-client-settings {
          |    max-rollback-height = $storedBlocks
          |    max-cached-latest-block-updates = $storedBlocks

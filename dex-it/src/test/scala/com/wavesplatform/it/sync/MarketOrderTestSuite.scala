@@ -29,7 +29,7 @@ class MarketOrderTestSuite extends MatcherSuiteBase {
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""
        |waves.dex {
-       |  price-assets = [ "$UsdId", "WAVES", "$EthId", "$BtcId", "$WctId" ]
+       |  price-assets = [ "$UsdId", "DCC", "$EthId", "$BtcId", "$WctId" ]
        |  allowed-order-versions = [1, 2, 3]
        |  order-fee.-1 {
        |    mode = percent

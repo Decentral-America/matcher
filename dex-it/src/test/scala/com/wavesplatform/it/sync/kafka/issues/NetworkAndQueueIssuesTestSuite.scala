@@ -27,7 +27,7 @@ class NetworkAndQueueIssuesTestSuite extends WsSuiteBase with HasWebSockets with
   private val waitAfterNetworkChanges = deliveryTimeout
 
   override protected val dexInitialSuiteConfig: Config = ConfigFactory.parseString(s"""waves.dex {
-  price-assets = [ "$UsdId", "WAVES" ]
+  price-assets = [ "$UsdId", "DCC" ]
   events-queue {
     kafka.producer.client {
       acks = 1

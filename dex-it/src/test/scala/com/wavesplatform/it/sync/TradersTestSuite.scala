@@ -20,7 +20,7 @@ class TradersTestSuite extends MatcherSuiteBase {
   override protected val dexInitialSuiteConfig: Config =
     ConfigFactory.parseString(
       s"""waves.dex {
-         |  price-assets = [ "$UsdId", "WAVES", "$WctId" ]
+         |  price-assets = [ "$UsdId", "DCC", "$WctId" ]
          |  grpc.integration.caches.default-expiration = 1ms
          |}""".stripMargin
     )

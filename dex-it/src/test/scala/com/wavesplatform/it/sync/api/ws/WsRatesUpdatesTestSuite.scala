@@ -12,7 +12,7 @@ import scala.util.Using
 class WsRatesUpdatesTestSuite extends WsSuiteBase {
 
   override protected val dexInitialSuiteConfig: Config =
-    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$BtcId", "$UsdId", "WAVES" ]""")
+    ConfigFactory.parseString(s"""waves.dex.price-assets = [ "$BtcId", "$UsdId", "DCC" ]""")
 
   override protected def beforeAll(): Unit = {
     wavesNode1.start()

@@ -11,7 +11,7 @@ class HttpRatesSpec extends AnyFreeSpec with Matchers with DiffMatcherWithImplic
 
   private val json =
     """{
-      |  "WAVES" : 1,
+      |  "DCC" : 1,
       |  "2gCPcEnoZa9LtZzZPFK9fJf7aWzvdBJUABayd1Zj5qFh" : 3
       |}""".stripMargin
 

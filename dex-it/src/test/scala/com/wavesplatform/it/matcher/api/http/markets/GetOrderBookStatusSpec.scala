@@ -15,7 +15,7 @@ class GetOrderBookStatusSpec extends MatcherSuiteBase with TableDrivenPropertyCh
 
   override protected def dexInitialSuiteConfig: Config = ConfigFactory.parseString(
     s"""waves.dex {
-       |  price-assets = [ "$BtcId", "$UsdId", "WAVES" ]
+       |  price-assets = [ "$BtcId", "$UsdId", "DCC" ]
        |}""".stripMargin
   )
 
@@ -104,7 +104,7 @@ class GetOrderBookStatusSpec extends MatcherSuiteBase with TableDrivenPropertyCh
 
     "should return exception when amount is not a correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getOrderBookStatus("null", "WAVES"),
+        dex1.rawApi.getOrderBookStatus("null", DCC),
         StatusCode.BadRequest,
         InvalidAsset.code,
         "The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -113,7 +113,7 @@ class GetOrderBookStatusSpec extends MatcherSuiteBase with TableDrivenPropertyCh
 
     "should return exception when price is not a correct base58 string" in {
       validateMatcherError(
-        dex1.rawApi.getOrderBookStatus("WAVES", "null"),
+        dex1.rawApi.getOrderBookStatus(DCC, "null"),
         StatusCode.BadRequest,
         InvalidAsset.code,
         "The asset 'null' is wrong, reason: requirement failed: Wrong char 'l' in Base58 string 'null'"
@@ -122,8 +122,8 @@ class GetOrderBookStatusSpec extends MatcherSuiteBase with TableDrivenPropertyCh
 
     forAll(Table(
       ("Amount", "Price", "Http status", "Error code", "Message"),
-      ("incorrect", "WAVES", StatusCode.NotFound, AssetNotFound.code, "The asset incorrect not found"),
-      ("WAVES", "incorrect", StatusCode.NotFound, OrderAssetPairReversed.code, "The WAVES-incorrect asset pair should be reversed")
+      ("incorrect", DCC, StatusCode.NotFound, AssetNotFound.code, "The asset incorrect not found"),
+      (DCC, "incorrect", StatusCode.NotFound, OrderAssetPairReversed.code, "The WAVES-incorrect asset pair should be reversed")
     )) { (a: String, p: String, c: StatusCode, e: Int, m: String) =>
       s"for $a/$p should return (HTTP-$c; [$e: $m]) " in {
         validateMatcherError(dex1.rawApi.getOrderBookStatus(AssetPair.createAssetPair(a, p).get), c, e, m)
